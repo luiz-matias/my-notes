@@ -1,5 +1,6 @@
 package com.luizmatias.mynotes.ui.notes.notes
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -62,7 +63,15 @@ class NotesActivity : AppCompatActivity() {
         })
 
         adapter.onRemoveClickListener = {
-            notesViewModel.removeNote(it)
+            AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.remove_confirmation_title))
+                    .setPositiveButton(getString(R.string.remove)) { dialog, _ ->
+                        notesViewModel.removeNote(it)
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                        dialog.dismiss()
+                    }.show()
         }
 
         adapter.onEditClickListener = {
@@ -73,7 +82,7 @@ class NotesActivity : AppCompatActivity() {
 
     private fun initObservers() {
         notesViewModel.getNotes()?.observe(this, Observer {
-            if (it.isNotEmpty()){
+            if (it.isNotEmpty()) {
                 recyclerViewNotes.visibility = View.VISIBLE
                 constraintLayoutEmpty.visibility = View.GONE
                 lottieAnimationView.pauseAnimation()

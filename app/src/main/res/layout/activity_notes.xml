@@ -96,15 +96,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:backgroundTint="@color/secondaryColor"
-        android:elevation="8dp"
-        app:fabAlignmentMode="end"
+        app:fabAlignmentMode="center"
         app:hideOnScroll="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabNewNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="12dp"
         android:src="@drawable/round_add_white_24"
         app:fabSize="normal"
         app:layout_anchor="@id/bottomAppBar" />
