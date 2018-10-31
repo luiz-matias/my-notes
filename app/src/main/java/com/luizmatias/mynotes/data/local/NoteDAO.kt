@@ -14,7 +14,7 @@ interface NoteDAO {
     fun getAll(): LiveData<List<Note>>
 
     @Query("SELECT * FROM notes WHERE notes.id = :id")
-    fun getNote(id: Int): LiveData<List<Note>>
+    fun getNote(id: Int): LiveData<Note>
 
     @Update
     fun updateNote(note: Note)

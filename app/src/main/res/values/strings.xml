@@ -13,4 +13,7 @@
     <string name="invalid_title">Invalid title</string>
     <string name="invalid_description">Invalid description</string>
     <string name="note_saved">Note saved!</string>
+    <string name="edit_note">Edit note</string>
+    <string name="empty_title">Hmm.. so quiet!</string>
+    <string name="empty_description">Create your first note clicking in the button below</string>
 </resources>

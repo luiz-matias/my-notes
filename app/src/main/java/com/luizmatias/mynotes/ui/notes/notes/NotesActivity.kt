@@ -2,13 +2,14 @@ package com.luizmatias.mynotes.ui.notes.notes
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.luizmatias.mynotes.R
 import com.luizmatias.mynotes.ui.notes.addnote.AddNoteActivity
+import com.luizmatias.mynotes.ui.notes.editnote.EditNoteActivity
 import com.luizmatias.mynotes.utils.LinearLayoutManagerUtil
 import kotlinx.android.synthetic.main.activity_notes.*
 import java.util.*
@@ -65,14 +66,24 @@ class NotesActivity : AppCompatActivity() {
         }
 
         adapter.onEditClickListener = {
-            Toast.makeText(this, "TODO edit button", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this@NotesActivity, EditNoteActivity::class.java).putExtra("noteId", it.id))
         }
 
     }
 
     private fun initObservers() {
         notesViewModel.getNotes()?.observe(this, Observer {
-            adapter.updateItens(ArrayList(it))
+            if (it.isNotEmpty()){
+                recyclerViewNotes.visibility = View.VISIBLE
+                constraintLayoutEmpty.visibility = View.GONE
+                lottieAnimationView.pauseAnimation()
+
+                adapter.updateItens(ArrayList(it))
+            } else {
+                recyclerViewNotes.visibility = View.GONE
+                constraintLayoutEmpty.visibility = View.VISIBLE
+                lottieAnimationView.playAnimation()
+            }
         })
     }
 }
