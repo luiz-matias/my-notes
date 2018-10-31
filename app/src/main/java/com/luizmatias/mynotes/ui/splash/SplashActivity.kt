@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        textViewTitulo.visibility = View.VISIBLE
+        textViewTitle.visibility = View.VISIBLE
 
         Handler().postDelayed({
             startActivity(Intent(this@SplashActivity, NotesActivity::class.java))

@@ -17,8 +17,11 @@ abstract class NotesDatabase : RoomDatabase() {
         fun getInstance(context: Context): NotesDatabase? {
             if (instance == null) {
                 synchronized(NotesDatabase::class) {
-                    instance = Room.databaseBuilder(context.applicationContext,
-                            NotesDatabase::class.java, "notes.db")
+                    instance = Room
+                            .databaseBuilder(context.applicationContext,
+                                    NotesDatabase::class.java,
+                                    "notes.db")
+                            .allowMainThreadQueries()
                             .build()
                 }
             }

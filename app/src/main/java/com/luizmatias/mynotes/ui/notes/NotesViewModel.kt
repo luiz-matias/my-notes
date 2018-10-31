@@ -1,24 +1,24 @@
 package com.luizmatias.mynotes.ui.notes
 
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.luizmatias.mynotes.data.local.NotesDatabase
 import com.luizmatias.mynotes.data.model.Note
 
-class NotesViewModel : ViewModel() {
+class NotesViewModel(application: Application) : AndroidViewModel(application) {
 
-    private lateinit var note: MutableLiveData<List<Note>>
+    private var notes: LiveData<List<Note>>? = null
 
-    fun getNotes(): LiveData<List<Note>> {
-        if (!::note.isInitialized) {
-            note = MutableLiveData()
+    fun getNotes(): LiveData<List<Note>>? {
+        if (notes == null)
             loadNotes()
-        }
-        return note
+        return notes
     }
 
     private fun loadNotes() {
-
+        notes = NotesDatabase.getInstance(getApplication() as Context)?.noteDAO()?.getAll()
     }
 
 }

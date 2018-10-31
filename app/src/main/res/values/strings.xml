@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">My Notes</string>
+    <string name="lorem_ipsum">Lorem Ipsum</string>
+    <string name="details">Details</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+    <string name="created_at">Created at %s</string>
+    <string name="add_note">Add note</string>
+    <string name="title_hint">Title</string>
+    <string name="description_hint">Description</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="invalid_title">Invalid title</string>
+    <string name="invalid_description">Invalid description</string>
+    <string name="note_saved">Note saved!</string>
 </resources>

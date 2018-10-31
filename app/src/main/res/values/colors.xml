@@ -3,11 +3,12 @@
     <color name="primaryColor">#ffffff</color>
     <color name="primaryLightColor">#ffffff</color>
     <color name="primaryDarkColor">#cccccc</color>
-    <color name="secondaryColor">#ffc107</color>
-    <color name="secondaryLightColor">#fff350</color>
-    <color name="secondaryDarkColor">#c79100</color>
+    <color name="secondaryColor">#6200ee</color>
+    <color name="secondaryLightColor">#9e47ff</color>
+    <color name="secondaryDarkColor">#0400ba</color>
     <color name="primaryTextColor">#000000</color>
-    <color name="secondaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#444444</color>
+    <color name="tertiaryTextColor">#777777</color>
     <color name="errorColor">#f44336</color>
     <color name="white">#fff</color>
     <color name="black">#000</color>
