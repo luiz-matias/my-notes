@@ -1,4 +1,4 @@
-package com.luizmatias.mynotes.ui.notes
+package com.luizmatias.mynotes.ui.notes.notes
 
 import android.app.Application
 import android.content.Context
@@ -19,6 +19,10 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun loadNotes() {
         notes = NotesDatabase.getInstance(getApplication() as Context)?.noteDAO()?.getAll()
+    }
+
+    fun removeNote(note: Note) {
+        NotesDatabase.getInstance(getApplication() as Context)?.noteDAO()?.removeNote(note)
     }
 
 }

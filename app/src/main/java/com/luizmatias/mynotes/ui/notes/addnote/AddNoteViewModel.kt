@@ -1,4 +1,4 @@
-package com.luizmatias.mynotes.ui.notes
+package com.luizmatias.mynotes.ui.notes.addnote
 
 import android.app.Application
 import android.content.Context

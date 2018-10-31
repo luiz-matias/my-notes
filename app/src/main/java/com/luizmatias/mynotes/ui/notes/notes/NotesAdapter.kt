@@ -1,11 +1,11 @@
-package com.luizmatias.mynotes.ui.notes
+package com.luizmatias.mynotes.ui.notes.notes
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.luizmatias.mynotes.R
@@ -14,9 +14,12 @@ import com.luizmatias.mynotes.utils.timestampToDate
 import kotlinx.android.synthetic.main.note_item.view.*
 import java.util.*
 
+
 class NotesAdapter(private val context: Context) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
     private val notes: ArrayList<Note> = ArrayList()
+    var onRemoveClickListener: (note: Note) -> Unit = { _ -> }
+    var onEditClickListener: (note: Note) -> Unit = { _ -> }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.note_item, parent, false)
@@ -36,24 +39,20 @@ class NotesAdapter(private val context: Context) : RecyclerView.Adapter<NotesAda
         holder.textViewDescription.text = note.description
 
         holder.buttonEdit.setOnClickListener {
-            Toast.makeText(context, "TODO edit button", Toast.LENGTH_SHORT).show()
+            onEditClickListener(note)
         }
 
         holder.buttonRemove.setOnClickListener {
-            Toast.makeText(context, "TODO remove button", Toast.LENGTH_SHORT).show()
+            onRemoveClickListener(note)
         }
 
     }
 
-    fun addItens(notes: ArrayList<Note>) {
-        this.notes.addAll(notes)
-        notifyItemRangeChanged(this.notes.size - notes.size, this.notes.size)
-    }
-
-    fun replaceItens(notes: ArrayList<Note>) {
+    fun updateItens(notes: ArrayList<Note>) {
+        val diffResult = DiffUtil.calculateDiff(NotesDiffCallback(notes, this.notes))
         this.notes.clear()
         this.notes.addAll(notes)
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

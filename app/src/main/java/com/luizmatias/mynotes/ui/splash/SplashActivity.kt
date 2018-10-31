@@ -6,7 +6,7 @@ import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.luizmatias.mynotes.R
-import com.luizmatias.mynotes.ui.notes.NotesActivity
+import com.luizmatias.mynotes.ui.notes.notes.NotesActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
