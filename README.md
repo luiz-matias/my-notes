@@ -15,14 +15,12 @@
 Feel free collaborating with issues, feedbacks, and code reviews.
 </p>
 
----
-
 ## Technologies and patterns used:
 * **Language: Kotlin**
 * **Project Architecture: MVVM (Model View ViewModel)**
 * **Local Database: Room**
 * **AAC - Android Architecture Components**
 * **CLEAN Architecture**
----
+
 ## Design Guidelines:
 This app was made using [Material Design 2.0 Guideline (Material)](https://material.io/).
