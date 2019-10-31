@@ -2,8 +2,6 @@
   My Notes
 </h2>
 
----
-
 <h3 align="center">
   A simple Android App who manages notes with title and description. The objective is to update this repository as I need to learn about new releases for the Android platform.
 </h3>
@@ -16,7 +14,9 @@
 <p align="center">
 Feel free collaborating with issues, feedbacks, and code reviews.
 </p>
+
 ---
+
 ## Technologies and patterns used:
 * **Language: Kotlin**
 * **Project Architecture: MVVM (Model View ViewModel)**
