@@ -1,4 +1,4 @@
-package com.luizmatias.mynotes.ui.notes.notes
+package com.luizmatias.mynotes.app.notes.notes
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.luizmatias.mynotes.R
-import com.luizmatias.mynotes.data.model.Note
+import com.luizmatias.mynotes.data.local.model.NoteData
 import com.luizmatias.mynotes.utils.timestampToDate
 import kotlinx.android.synthetic.main.note_item.view.*
 import java.util.*
@@ -17,19 +17,19 @@ import java.util.*
 
 class NotesAdapter(private val context: Context) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
-    private val notes: ArrayList<Note> = ArrayList()
-    var onRemoveClickListener: (note: Note) -> Unit = { _ -> }
-    var onEditClickListener: (note: Note) -> Unit = { _ -> }
+    private val noteData: ArrayList<NoteData> = ArrayList()
+    var onRemoveClickListener: (noteData: NoteData) -> Unit = { _ -> }
+    var onEditClickListener: (noteData: NoteData) -> Unit = { _ -> }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.note_item, parent, false)
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = notes.size
+    override fun getItemCount(): Int = noteData.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val note = notes[position]
+        val note = noteData[position]
 
         holder.textViewTitle.text = note.title
         holder.textViewCreatedAt.text = String.format(Locale.getDefault(),
@@ -48,10 +48,10 @@ class NotesAdapter(private val context: Context) : RecyclerView.Adapter<NotesAda
 
     }
 
-    fun updateItens(notes: ArrayList<Note>) {
-        val diffResult = DiffUtil.calculateDiff(NotesDiffCallback(notes, this.notes))
-        this.notes.clear()
-        this.notes.addAll(notes)
+    fun updateItens(noteData: ArrayList<NoteData>) {
+        val diffResult = DiffUtil.calculateDiff(NotesDiffCallback(noteData, this.noteData))
+        this.noteData.clear()
+        this.noteData.addAll(noteData)
         diffResult.dispatchUpdatesTo(this)
     }
 

@@ -1,4 +1,4 @@
-package com.luizmatias.mynotes.ui.notes.addnote
+package com.luizmatias.mynotes.app.notes.addnote
 
 sealed class AddNoteStateHandler {
     class setTitleError(val error: Boolean) : AddNoteStateHandler()

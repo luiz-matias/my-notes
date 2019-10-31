@@ -1,4 +1,4 @@
-package com.luizmatias.mynotes.ui.notes.editnote
+package com.luizmatias.mynotes.app.notes.editnote
 
 sealed class EditNoteStateHandler {
     class setTitleError(val error: Boolean) : EditNoteStateHandler()

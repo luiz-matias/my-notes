@@ -7,11 +7,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.luizmatias.mynotes"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -27,28 +27,28 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 
     //livedata
-    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
 
     //room
-    implementation "androidx.room:room-runtime:2.0.0"
-    kapt "androidx.room:room-compiler:2.0.0"
+    implementation "androidx.room:room-runtime:2.2.1"
+    kapt "androidx.room:room-compiler:2.2.1"
 
     //lottie
-    implementation 'com.airbnb.android:lottie:2.8.0'
+    implementation 'com.airbnb.android:lottie:3.0.7'
 
     //firebase core
-    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-core:17.2.1'
 
     //firebase dynamic links
-    implementation 'com.google.firebase:firebase-dynamic-links:16.1.5'
+    implementation 'com.google.firebase:firebase-dynamic-links:19.0.0'
 
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 apply plugin: 'com.google.gms.google-services'

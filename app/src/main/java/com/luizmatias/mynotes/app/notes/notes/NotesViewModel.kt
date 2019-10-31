@@ -1,17 +1,17 @@
-package com.luizmatias.mynotes.ui.notes.notes
+package com.luizmatias.mynotes.app.notes.notes
 
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.luizmatias.mynotes.data.local.NotesDatabase
-import com.luizmatias.mynotes.data.model.Note
+import com.luizmatias.mynotes.data.local.model.NoteData
 
 class NotesViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var notes: LiveData<List<Note>>? = null
+    private var notes: LiveData<List<NoteData>>? = null
 
-    fun getNotes(): LiveData<List<Note>>? {
+    fun getNotes(): LiveData<List<NoteData>>? {
         if (notes == null)
             loadNotes()
         return notes
@@ -21,8 +21,8 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
         notes = NotesDatabase.getInstance(getApplication() as Context)?.noteDAO()?.getAll()
     }
 
-    fun removeNote(note: Note) {
-        NotesDatabase.getInstance(getApplication() as Context)?.noteDAO()?.removeNote(note)
+    fun removeNote(noteData: NoteData) {
+        NotesDatabase.getInstance(getApplication() as Context)?.noteDAO()?.removeNote(noteData)
     }
 
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
-    tools:context=".ui.notes.notes.NotesActivity">
+    tools:context=".app.noteData.noteData.NotesActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

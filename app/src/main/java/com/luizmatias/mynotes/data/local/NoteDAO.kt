@@ -2,24 +2,27 @@ package com.luizmatias.mynotes.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.luizmatias.mynotes.data.model.Note
+import com.luizmatias.mynotes.data.local.model.NoteData
 
 @Dao
 interface NoteDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addNote(note: Note)
+    fun addNote(noteData: NoteData)
 
     @Query("SELECT * FROM notes")
-    fun getAll(): LiveData<List<Note>>
+    fun getAll(): LiveData<List<NoteData>>
+
+    @Query("SELECT * FROM notes")
+    fun getAll2(): List<NoteData>
 
     @Query("SELECT * FROM notes WHERE notes.id = :id")
-    fun getNote(id: Int): LiveData<Note>
+    fun getNote(id: Int): LiveData<NoteData>
 
     @Update
-    fun updateNote(note: Note)
+    fun updateNote(noteData: NoteData)
 
     @Delete
-    fun removeNote(note: Note)
+    fun removeNote(noteData: NoteData)
 
 }

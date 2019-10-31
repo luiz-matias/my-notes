@@ -1,4 +1,4 @@
-package com.luizmatias.mynotes.ui.notes.editnote
+package com.luizmatias.mynotes.app.notes.addnote
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,17 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.luizmatias.mynotes.R
-import kotlinx.android.synthetic.main.activity_edit_note.*
+import kotlinx.android.synthetic.main.activity_add_note.*
 
-class EditNoteActivity : AppCompatActivity() {
+class AddNoteActivity : AppCompatActivity() {
 
-    private val editNoteViewModel: EditNoteViewModel by lazy {
-        ViewModelProviders.of(this).get(EditNoteViewModel::class.java)
+    private val addNoteViewModel: AddNoteViewModel by lazy {
+        ViewModelProviders.of(this).get(AddNoteViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_note)
+        setContentView(R.layout.activity_add_note)
 
         setSupportActionBar(toolbar)
 
@@ -29,7 +29,7 @@ class EditNoteActivity : AppCompatActivity() {
         }
 
         buttonSave.setOnClickListener {
-            editNoteViewModel.validateNote(
+            addNoteViewModel.validateNote(
                 textInputEditTextTitle.text.toString(),
                 textInputEditTextDescription.text.toString()
             )
@@ -40,24 +40,17 @@ class EditNoteActivity : AppCompatActivity() {
     }
 
     private fun initObservers() {
-        val noteId: Int = intent.getIntExtra("noteId", -1)
-
-        editNoteViewModel.getNote(noteId)?.observe(this, Observer {
-            textInputEditTextTitle.setText(it.title)
-            textInputEditTextDescription.setText(it.description)
-        })
-
-        editNoteViewModel.editNoteStateHandler.observe(this, Observer {
+        addNoteViewModel.addNoteStateHandler.observe(this, Observer {
             when (it) {
-                is EditNoteStateHandler.setTitleError -> {
+                is AddNoteStateHandler.setTitleError -> {
                     textInputLayoutTitle.error = getString(R.string.invalid_title)
                     textInputLayoutTitle.isErrorEnabled = it.error
                 }
-                is EditNoteStateHandler.setDescriptionError -> {
+                is AddNoteStateHandler.setDescriptionError -> {
                     textInputLayoutDescription.error = getString(R.string.invalid_description)
                     textInputLayoutDescription.isErrorEnabled = it.error
                 }
-                is EditNoteStateHandler.noteEdited -> {
+                is AddNoteStateHandler.noteAdded -> {
                     Toast.makeText(this, getString(R.string.note_saved), Toast.LENGTH_SHORT).show()
                     finish()
                 }
@@ -73,4 +66,5 @@ class EditNoteActivity : AppCompatActivity() {
         }
         return true
     }
+
 }

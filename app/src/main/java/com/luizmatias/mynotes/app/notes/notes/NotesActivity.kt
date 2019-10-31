@@ -1,4 +1,4 @@
-package com.luizmatias.mynotes.ui.notes.notes
+package com.luizmatias.mynotes.app.notes.notes
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -9,8 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.luizmatias.mynotes.R
-import com.luizmatias.mynotes.ui.notes.addnote.AddNoteActivity
-import com.luizmatias.mynotes.ui.notes.editnote.EditNoteActivity
+import com.luizmatias.mynotes.app.notes.addnote.AddNoteActivity
+import com.luizmatias.mynotes.app.notes.editnote.EditNoteActivity
 import com.luizmatias.mynotes.utils.LinearLayoutManagerUtil
 import kotlinx.android.synthetic.main.activity_notes.*
 import java.util.*
